@@ -1,9 +1,12 @@
-var mysql = require('mysql2');
+const mysql = require('mysql2');
+const fs = require('fs'); 
 
-var connection = mysql.createConnection({
+//Connect to the database (MySQL)
+const connection = mysql.createConnection({
     host: "127.0.0.1",
     user: "root",
     database: "employee_tracker",
+    multipleStatements: true // for multiple queries 
   });
 
 connection.connect(function(err) {
@@ -12,3 +15,5 @@ connection.connect(function(err) {
   }
   console.log('Connected to the MySQL server.');
 });
+
+module.exports = connection; 

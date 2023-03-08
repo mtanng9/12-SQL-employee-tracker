@@ -10,7 +10,7 @@ CREATE TABLE employee_tracker.department (
 
 CREATE TABLE employee_tracker.role (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    tile VARCHAR(30) NOT NULL,
+    title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
     department_id INT,
     FOREIGN KEY (department_id) REFERENCES employee_tracker.department(id)
