@@ -106,7 +106,10 @@ inquirer.prompt(starter).then(async (answers) => {
                     values[i] = `"${value}"`;
                 }
                 if (value === "NONE") {
-                    values[i] = null;
+                    if (i > -1) {
+                      keys.splice(i, 1);
+                      values.splice(i,1);
+                    }
                 }
             });
 
