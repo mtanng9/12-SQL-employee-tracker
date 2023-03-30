@@ -34,7 +34,8 @@ inquirer.prompt(starter).then(async (answers) => {
         table = table.replace("s", "");
 
         let sql = await connect.promise().query(`SELECT * FROM ${table}`);
-        console.table(sql[0])
+        console.table(sql[0]);
+        process.exit();
 
 
     } else if (action === 'Add') {
@@ -111,7 +112,8 @@ inquirer.prompt(starter).then(async (answers) => {
 
             let query = `INSERT INTO ${table} (${keys}) VALUES (${values})`;
             await connect.promise().query(query);
-            console.log(`${table}`)
+            console.log(`${table}`);
+            process.exit();
         });
 
     } else if (action === 'Update') {
@@ -142,7 +144,8 @@ inquirer.prompt(starter).then(async (answers) => {
 
         inquirer.prompt(updateQuestions).then(async (answers) => {
             await connect.promise().query(`UPDATE employee SET role_id = ${answers.newRole.split("-")[0]} WHERE first_name = '${answers.employeeName.split(" ")[0]}' AND last_name = '${answers.employeeName.split(" ")[1]}'`);
-            console.log(`Updated Employee: ${answers.employeeName}`)
+            console.log(`Updated Employee: ${answers.employeeName}`);
+            process.exit();
         }) 
     }
 });
